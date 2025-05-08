@@ -55,6 +55,6 @@ function [] = treeqsm_mod(P,inputs)
 		if inputs.Tria
 			qsm(1).triangulation = triangulation;
 		end
-		save([inputs.name],'qsm');
+		save([inputs.name],'qsm', '-v7');
 	end
 end

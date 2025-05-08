@@ -5,10 +5,9 @@ function [] = runqsm(SINGLE_PATH_TO_CLOUDS,workers)
 	MAX_TIME_PER_ITER = 60*60*5;
 	[~,fnames,~] = sortFileNames(SINGLE_PATH_TO_CLOUDS);
 	for i=1:length(fnames)
-		cloud = load(char(fnames(i)));
-		dNNz1 = dNNz(cloud,3,2.5);       
-		dNNz2 = dNNz(cloud,1,2.5);
-		inputs = optInputs(fnames(i),dNNz1,dNNz2);
+		cloud = dlmread(char(fnames(i)), ' ', 1, 0);
+        cloud = cloud(:, 1:3);
+		inputs = optInputs_b(fnames(i));
 		dispInputs(inputs);
 		if workers == 1
 			for j=1:length(inputs)

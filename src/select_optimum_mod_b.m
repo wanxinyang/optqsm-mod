@@ -60,11 +60,6 @@ for i = 1:m
         for j = 1:n
             treedata(j,i) = QSMs(i).treedata.(names{j});
         end
-
-	% if isnan(str2double(p.tree))
-	% 	p.tree = str2num(extractAfter(p.tree, p.tree(1)));
-	% end
-
         TreeId(i,:) = [p.tree p.model];
     else
         Keep(i) = false;
@@ -212,6 +207,6 @@ if nargin == 2
     inputs = OptInputs;
     models = OptModels;
     treedata = TreeData;
-    str = [savename '.mat'];
-    save(str,'qsm','treedata','models','inputs', '-v7')
+    str = [savename];
+    save(str,'qsm','treedata','models','inputs')
 end
