@@ -1,4 +1,9 @@
-# optqsm
+# optqsm (modified version)
+This repository is a modified version of optqsm, particularly the script `select_optimum_mod.m` enhances the original selectFullOpt.m by systematically evaluating all input parameter combinations across multiple trees and models, selecting optimal configurations based on mean distance metrics, and reporting detailed model statistics including mean, standard deviation, and coefficient of variation.
+
+---
+
+**Below are the original README of optqsm:**
 
 Automatically optimise and parallelise TreeQSM: a method for constructing structural models of trees from lidar point clouds
 
