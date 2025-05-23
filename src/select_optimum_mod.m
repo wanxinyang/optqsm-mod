@@ -15,7 +15,7 @@
 %
 % Copyright (C) 2013-2017 Pasi Raumonen
 
-function [TreeData,OptModels,OptInputs] = select_optimum_mod(QSMs,savename)
+function [TreeData,OptModels,OptInputs, outputFilename] = select_optimum_mod(QSMs)
 
 
 
@@ -183,6 +183,7 @@ end
 % Display optimal inputs, model and attributes for each tree
 for t = 1:nt
     disp(['  Tree: ',num2str(t)])
+    disp(['    Optimal QSM: ' ,OptQSM.rundata.inputs.name]);
     disp(['    Optimal inputs:  PatchDiam1 = ',num2str(OptInputs(t).PatchDiam1)])
     disp(['                  PatchDiam2Min = ',num2str(OptInputs(t).PatchDiam2Min)])
     disp(['                  PatchDiam2Max = ',num2str(OptInputs(t).PatchDiam2Max)])
@@ -207,11 +208,11 @@ for t = 1:nt
 end
 
 %% Save results
-if nargin == 2
-    qsm = OptQSM;
-    inputs = OptInputs;
-    models = OptModels;
-    treedata = TreeData;
-    str = [savename '.mat'];
-    save(str,'qsm','treedata','models','inputs', '-v7')
+qsm = OptQSM;
+inputs = OptInputs;
+models = OptModels;
+treedata = TreeData;
+[~, qsmfilename, ext] = fileparts(qsm.rundata.inputs.name);
+outputFilename = [qsmfilename '_opt.mat'];
+save(outputFilename,'qsm','treedata','models','inputs', '-v7')
 end
